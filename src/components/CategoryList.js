@@ -49,8 +49,8 @@ function CategoryList(props) {
         if (confirmDelete) {
             try {
                 await axios.delete(`https://ylovcox4jb.execute-api.us-east-1.amazonaws.com/category/${deleteId}`)
+                setRows((prevRows) => prevRows.filter(row => row.id !== deleteId));
                 window.alert("Category removed");
-                window.location.reload();
             } catch (e) {
                 return e
             }
