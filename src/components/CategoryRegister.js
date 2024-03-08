@@ -11,6 +11,11 @@ function CategoryRegister(props) {
 
     const postCategory = async () => {
         try {
+            if (!name || name === '') {
+                window.alert('Please fill in all required fields.');
+                return;
+            };
+
             await axios.post("https://ylovcox4jb.execute-api.us-east-1.amazonaws.com/register-category", { name });
             setShowSuccessMessage(true);
             setName("");
@@ -29,6 +34,7 @@ function CategoryRegister(props) {
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6}>
                         <TextField
+                            required
                             value={name}
                             onChange={(event) => setName(event.target.value)}
                             fullWidth
