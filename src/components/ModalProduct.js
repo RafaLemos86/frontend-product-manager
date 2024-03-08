@@ -35,16 +35,16 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
 
     const updateProduct = async () => {
         if (!name || !price || !category || name === '' || category === '') {
-            window.alert('Please fill in all required fields.');
+            window.alert('Please fill in all fields.');
             return;
-        }
+        };
 
         if (price < 0) {
             window.alert('price cannot be negative');
             return;
-        }
+        };
 
-        const confirmUpdate = window.confirm('Are you sure you want to update the name of this product?');
+        const confirmUpdate = window.confirm('Are you sure you want to update this product?');
         if (confirmUpdate) {
             try {
                 await axios.put(`https://ylovcox4jb.execute-api.us-east-1.amazonaws.com/product/${id}`, { name, price, category });
