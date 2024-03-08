@@ -34,7 +34,7 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
     }, [initialName, initialPrice]);
 
     const updateProduct = async () => {
-        if (!name || !price || !category) {
+        if (!name || !price || !category || name === '' || price === '' || category === '') {
             window.alert('Please fill in all required fields.');
             return;
         }

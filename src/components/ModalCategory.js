@@ -14,7 +14,7 @@ const ModalUpdateCategory = ({ isModalOpen, handleCloseModal, initialName, id })
     };
 
     const handleUpdateCategory = async () => {
-        if (!name) {
+        if (!name || name === '') {
             window.alert('Please fill in all required fields.');
             return;
         }
