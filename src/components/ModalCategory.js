@@ -14,6 +14,11 @@ const ModalUpdateCategory = ({ isModalOpen, handleCloseModal, initialName, id })
     };
 
     const handleUpdateCategory = async () => {
+        if (!name) {
+            window.alert('Please fill in all required fields.');
+            return;
+        }
+
         const confirmUpdate = window.confirm("Are you sure you want to update the name of this category?");
         if (confirmUpdate) {
             try {
@@ -54,6 +59,7 @@ const ModalUpdateCategory = ({ isModalOpen, handleCloseModal, initialName, id })
                     Edit Name
                 </Typography>
                 <TextField
+                    required
                     label="New Name"
                     type="text"
                     fullWidth

@@ -34,6 +34,11 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
     }, [initialName, initialPrice]);
 
     const updateProduct = async () => {
+        if (!name || !price || !category) {
+            window.alert('Please fill in all required fields.');
+            return;
+        }
+
         const confirmUpdate = window.confirm('Are you sure you want to update the name of this product?');
         if (confirmUpdate) {
             try {
@@ -70,6 +75,7 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
                     Edit Product
                 </Typography>
                 <TextField
+                    required
                     label="New Name"
                     type="text"
                     fullWidth
@@ -78,6 +84,7 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
                     sx={{ mb: 2 }}
                 />
                 <TextField
+                    required
                     label="New Price"
                     type="number"
                     fullWidth
@@ -86,7 +93,7 @@ const ModalUpdateProduct = ({ isModalOpen, handleCloseModal, initialName, initia
                     sx={{ mb: 2 }}
                 />
                 <FormControl fullWidth>
-                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <InputLabel id="demo-simple-select-label" required>Category</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
