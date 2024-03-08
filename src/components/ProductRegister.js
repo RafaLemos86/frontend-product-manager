@@ -26,12 +26,16 @@ function ProductRegister(props) {
     }, []);
 
     const postProduct = async () => {
-        try {
-            if (!name || !price || !category) {
-                window.alert('Please fill in all fields.');
-                return;
-            }
+        if (price < 0) {
+            window.alert('price cannot be negative');
+            return;
+        }
 
+        if (!name || !price || !category || name === '' || category === '') {
+            window.alert('Please fill in all fields.');
+            return;
+        }
+        try {
             await axios.post("https://ylovcox4jb.execute-api.us-east-1.amazonaws.com/register-product", { name, price, category })
             setShowSuccessMessage(true);
             setName("");
@@ -63,6 +67,7 @@ function ProductRegister(props) {
                             value={price}
                             onChange={(event) => setPrice(event.target.value)}
                             fullWidth
+                            type='number'
                             id="outlined-basic"
                             label="Price"
                             variant="outlined"

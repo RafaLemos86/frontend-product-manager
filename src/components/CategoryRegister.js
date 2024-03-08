@@ -10,12 +10,12 @@ function CategoryRegister(props) {
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     const postCategory = async () => {
-        try {
-            if (!name || name === '') {
-                window.alert('Please fill in all required fields.');
-                return;
-            };
+        if (!name || name === '') {
+            window.alert('Please fill in all required fields.');
+            return;
+        };
 
+        try {
             await axios.post("https://ylovcox4jb.execute-api.us-east-1.amazonaws.com/register-category", { name });
             setShowSuccessMessage(true);
             setName("");
